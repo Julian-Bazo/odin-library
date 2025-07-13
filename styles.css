@@ -77,4 +77,5 @@ form h3 {
     color: red;
     cursor: pointer;
     margin: 0;
+    margin-right: .5rem;
 }

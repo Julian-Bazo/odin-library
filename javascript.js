@@ -1,5 +1,4 @@
 const myLibrary = [];
-// let bookID = self.crypto.randomUUID;
 let bookID = 0;
 
 
@@ -13,12 +12,6 @@ function Book(title, author, pages) {
     this.pages = pages;
     bookID++;
     this.ID = bookID;
-    // if (readStatus.value !== "yes") {
-    //     read = "no";
-    // }
-    // else {
-    //     read = "yes";
-    // }
 }
 
 function addBooktoLibrary(title, author, pages) {
@@ -50,15 +43,27 @@ const mappedLibrary = myLibrary.map((book) => {
     deleteButton.addEventListener("click", () => {
         mainGrid.removeChild(bookCard);
     })
+    const readButton = document.createElement("button");
+    readButton.classList.add("read-button");
+    bookCard.appendChild(readButton);
+    readButton.textContent = "Mark Read";
+    readButton.addEventListener("click", () => {
+        if (readButton.textContent === "Mark Read") {
+            readButton.textContent = "Mark Unread";
+            bookCard.classList.add("read");
+        }
+        else {
+            readButton.textContent = "Mark Read";
+            bookCard.classList.remove("read");
+        }
+
+    })
 })
 }
 
 function updateLibrary(book) {
     const bookCard = document.createElement("div");
     bookCard.classList.add("book");
-    // if (readStatus.value === "yes") {
-    //     bookCard.style.borderLeft("1rem solid greenyellow");
-    // }
     mainGrid.appendChild(bookCard);
     bookCard.innerText = `Title: ${book.title} \n Author: ${book.author} \n Pages: ${book.pages} \n ID: ${book.ID} \n`;
     const deleteButton = document.createElement("button");
@@ -67,6 +72,21 @@ function updateLibrary(book) {
     bookCard.appendChild(deleteButton);
     deleteButton.addEventListener("click", () => {
         mainGrid.removeChild(bookCard);
+    })
+        const readButton = document.createElement("button");
+    readButton.classList.add("read-button");
+    bookCard.appendChild(readButton);
+    readButton.textContent = "Mark Read";
+    readButton.addEventListener("click", () => {
+        if (readButton.textContent === "Mark Read") {
+            readButton.textContent = "Mark Unread";
+            bookCard.classList.add("read");
+        }
+        else {
+            readButton.textContent = "Mark Read";
+            bookCard.classList.remove("read");
+        }
+
     })
 }
 
@@ -120,5 +140,4 @@ submitButton.addEventListener("click", () => {
 
 
 // TO DO
-// Add button to remove books
 // Add button to change a book from unread to read
