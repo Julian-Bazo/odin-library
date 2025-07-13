@@ -73,7 +73,7 @@ function updateLibrary(book) {
     deleteButton.addEventListener("click", () => {
         mainGrid.removeChild(bookCard);
     })
-        const readButton = document.createElement("button");
+    const readButton = document.createElement("button");
     readButton.classList.add("read-button");
     bookCard.appendChild(readButton);
     readButton.textContent = "Mark Read";
@@ -88,6 +88,10 @@ function updateLibrary(book) {
         }
 
     })
+    if (valueChecker === "yes") {
+        bookCard.classList.add("read")
+        readButton.textContent = "Mark Unread";
+    }
 }
 
 initializeLibrary();
@@ -119,7 +123,12 @@ const resetButton = document.querySelector(".reset-button");
 const bookTitle = document.querySelector("#book-title");
 const authorName = document.querySelector("#author-name");
 const pageCount = document.querySelector("#page-count");
-const readStatus = document.querySelector("#read-status");
+const readStatus = document.querySelector(".read-status");
+
+readStatus.addEventListener("mouseout", () => {
+    valueChecker = readStatus.value;
+    console.log(valueChecker);
+})
 
 let currentBookIndex = 0;
 
@@ -140,4 +149,3 @@ submitButton.addEventListener("click", () => {
 
 
 // TO DO
-// Add button to change a book from unread to read
