@@ -36,5 +36,11 @@ const mappedLibrary = myLibrary.map((book) => {
     bookCard.classList.add("book");
     mainGrid.appendChild(bookCard);
     bookCard.innerText = `Title: ${book.title} \n Author: ${book.author} \n Pages: ${book.pages}`;
+})
+
+const addButton = document.querySelector(".add-button");
+// const stableForm = document.querySelector(".stable-form-div");
+
+addButton.addEventListener("click", () => {
 
 })
