@@ -72,3 +72,9 @@ form h3 {
 .read {
     border-left: 1rem solid yellowgreen;
 }
+
+.delete-button {
+    color: red;
+    cursor: pointer;
+    margin: 0;
+}

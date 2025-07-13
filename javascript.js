@@ -42,7 +42,14 @@ const mappedLibrary = myLibrary.map((book) => {
     const bookCard = document.createElement("div");
     bookCard.classList.add("book");
     mainGrid.appendChild(bookCard);
-    bookCard.innerText = `Title: ${book.title} \n Author: ${book.author} \n Pages: ${book.pages} \n ID: ${book.ID}`;
+    bookCard.innerText = `Title: ${book.title} \n Author: ${book.author} \n Pages: ${book.pages} \n ID: ${book.ID} \n`;
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Remove"
+    deleteButton.classList.add("delete-button")
+    bookCard.appendChild(deleteButton);
+    deleteButton.addEventListener("click", () => {
+        mainGrid.removeChild(bookCard);
+    })
 })
 }
 
@@ -53,7 +60,14 @@ function updateLibrary(book) {
     //     bookCard.style.borderLeft("1rem solid greenyellow");
     // }
     mainGrid.appendChild(bookCard);
-    bookCard.innerText = `Title: ${book.title} \n Author: ${book.author} \n Pages: ${book.pages} \n ID: ${book.ID}`;
+    bookCard.innerText = `Title: ${book.title} \n Author: ${book.author} \n Pages: ${book.pages} \n ID: ${book.ID} \n`;
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Remove"
+    deleteButton.classList.add("delete-button")
+    bookCard.appendChild(deleteButton);
+    deleteButton.addEventListener("click", () => {
+        mainGrid.removeChild(bookCard);
+    })
 }
 
 initializeLibrary();
