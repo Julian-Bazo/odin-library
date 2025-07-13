@@ -19,13 +19,13 @@ function addBooktoLibrary(title, author, pages) {
     return myLibrary.push(new Book(title, author, pages));
 }
 
-addBooktoLibrary("LoTR", "Tolkien", "297");
-addBooktoLibrary("GoT", "Martin", "804");
-addBooktoLibrary("GoT", "Martin", "804");
-addBooktoLibrary("GoT", "Martin", "804");
-addBooktoLibrary("GoT", "Martin", "804");
-addBooktoLibrary("GoT", "Martin", "804");
-addBooktoLibrary("GoT", "Martin", "804");
+addBooktoLibrary("The Lord of the Rings", "Tolkien", "1300");
+addBooktoLibrary("A Game of Thrones", "Martin", "804");
+addBooktoLibrary("A Clash of Kings", "Martin", "954");
+addBooktoLibrary("A Storm of Swords", "Martin", "1003");
+addBooktoLibrary("A Feast for Crows", "Martin", "786");
+addBooktoLibrary("A Dance with Dragons", "Martin", "990");
+addBooktoLibrary("The Winds of Winter", "Martin", "1405");
 
 console.table(myLibrary);
 
@@ -36,8 +36,15 @@ const mappedLibrary = myLibrary.map((book) => {
     const bookCard = document.createElement("div");
     bookCard.classList.add("book");
     mainGrid.appendChild(bookCard);
-    bookCard.innerText = `Title: ${book.title} \n Author: ${book.author} \n Pages: ${book.pages} \n ID: ${book.bookID}`;
+    bookCard.innerText = `Title: ${book.title} \n Author: ${book.author} \n Pages: ${book.pages} \n ID: ${book.ID}`;
 })
+}
+
+function updateLibrary(book) {
+    const bookCard = document.createElement("div");
+    bookCard.classList.add("book");
+    mainGrid.appendChild(bookCard);
+    bookCard.innerText = `Title: ${book.title} \n Author: ${book.author} \n Pages: ${book.pages} \n ID: ${book.ID}`;
 }
 
 initializeLibrary();
@@ -70,13 +77,17 @@ const bookTitle = document.querySelector("#book-title");
 const authorName = document.querySelector("#author-name");
 const pageCount = document.querySelector("#page-count");
 
+let currentBookIndex = 0;
+
 submitButton.addEventListener("click", () => {
     event.preventDefault();
     if (bookTitle.value !== "" && authorName.value !== "" && pageCount.value !== "") {    
         addBooktoLibrary(bookTitle.value, authorName.value, pageCount.value);
+        currentBookIndex = myLibrary.length - 1;
         addButton.click();
         resetButton.click()
-        console.log(authorName.value);
+        updateLibrary(myLibrary[currentBookIndex]);
+        console.log(myLibrary.lastIndexOf);
     }
     else {
         alert("Please include all details!")
@@ -84,8 +95,4 @@ submitButton.addEventListener("click", () => {
 })
 
 
-
-// TO
-// Fix ID system
-// Add new book to grid when submit button is pressed
-    // Find a way to refresh the array without reprinting the whole thing
+// TO DO
