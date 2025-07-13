@@ -1,0 +1,17 @@
+.library-cards {
+    display: grid;
+    grid-template: 1fr / repeat(3, 1fr);
+    grid-auto-flow: row;
+    grid-auto-rows: 1fr;
+    gap: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.book {
+    background-color: #eee;
+    font-size: 1.5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border-left: 1rem solid greenyellow;
+}

@@ -21,5 +21,20 @@ function addBooktoLibrary(title, author, pages) {
 
 addBooktoLibrary("LoTR", "Tolkien", "297");
 addBooktoLibrary("GoT", "Martin", "804");
+addBooktoLibrary("GoT", "Martin", "804");
+addBooktoLibrary("GoT", "Martin", "804");
+addBooktoLibrary("GoT", "Martin", "804");
+addBooktoLibrary("GoT", "Martin", "804");
+addBooktoLibrary("GoT", "Martin", "804");
 
 console.table(myLibrary);
+
+const mainGrid = document.querySelector(".library-cards");
+
+const mappedLibrary = myLibrary.map((book) => {
+    const bookCard = document.createElement("div");
+    bookCard.classList.add("book");
+    mainGrid.appendChild(bookCard);
+    bookCard.innerText = `Title: ${book.title} \n Author: ${book.author} \n Pages: ${book.pages}`;
+
+})
