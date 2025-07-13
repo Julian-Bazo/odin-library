@@ -31,12 +31,16 @@ console.table(myLibrary);
 
 const mainGrid = document.querySelector(".library-cards");
 
+function initializeLibrary() {
 const mappedLibrary = myLibrary.map((book) => {
     const bookCard = document.createElement("div");
     bookCard.classList.add("book");
     mainGrid.appendChild(bookCard);
     bookCard.innerText = `Title: ${book.title} \n Author: ${book.author} \n Pages: ${book.pages} \n ID: ${book.bookID}`;
 })
+}
+
+initializeLibrary();
 
 const addButton = document.querySelector(".add-button");
 const formDiv = document.querySelector(".form-div");
@@ -52,11 +56,36 @@ addButton.addEventListener("click", () => {
         formDiv.style.display = "none";
         formHider = false;
     }
+    resetButton.click();
 })
+
+// DOM Initialization for Get Info
+
+// Form Buttons
+const submitButton = document.querySelector(".submit-button");
+const resetButton = document.querySelector(".reset-button");
+
+// Form Information
+const bookTitle = document.querySelector("#book-title");
+const authorName = document.querySelector("#author-name");
+const pageCount = document.querySelector("#page-count");
+
+submitButton.addEventListener("click", () => {
+    event.preventDefault();
+    if (bookTitle.value !== "" && authorName.value !== "" && pageCount.value !== "") {    
+        addBooktoLibrary(bookTitle.value, authorName.value, pageCount.value);
+        addButton.click();
+        resetButton.click()
+        console.log(authorName.value);
+    }
+    else {
+        alert("Please include all details!")
+    }
+})
+
+
 
 // TO
 // Fix ID system
-// Disable default behavior on submit button
 // Add new book to grid when submit button is pressed
-// Clear form with a "false click" on reset button when submitted
-// Set form display to none on submit as well
+    // Find a way to refresh the array without reprinting the whole thing
