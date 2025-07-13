@@ -13,6 +13,12 @@ function Book(title, author, pages) {
     this.pages = pages;
     bookID++;
     this.ID = bookID;
+    // if (readStatus.value !== "yes") {
+    //     read = "no";
+    // }
+    // else {
+    //     read = "yes";
+    // }
 }
 
 function addBooktoLibrary(title, author, pages) {
@@ -43,6 +49,9 @@ const mappedLibrary = myLibrary.map((book) => {
 function updateLibrary(book) {
     const bookCard = document.createElement("div");
     bookCard.classList.add("book");
+    // if (readStatus.value === "yes") {
+    //     bookCard.style.borderLeft("1rem solid greenyellow");
+    // }
     mainGrid.appendChild(bookCard);
     bookCard.innerText = `Title: ${book.title} \n Author: ${book.author} \n Pages: ${book.pages} \n ID: ${book.ID}`;
 }
@@ -76,12 +85,13 @@ const resetButton = document.querySelector(".reset-button");
 const bookTitle = document.querySelector("#book-title");
 const authorName = document.querySelector("#author-name");
 const pageCount = document.querySelector("#page-count");
+const readStatus = document.querySelector("#read-status");
 
 let currentBookIndex = 0;
 
 submitButton.addEventListener("click", () => {
     event.preventDefault();
-    if (bookTitle.value !== "" && authorName.value !== "" && pageCount.value !== "") {    
+    if (bookTitle.value !== "" && authorName.value !== "" && pageCount.value !== "" && readStatus.value !== "") {    
         addBooktoLibrary(bookTitle.value, authorName.value, pageCount.value);
         currentBookIndex = myLibrary.length - 1;
         addButton.click();
@@ -96,3 +106,5 @@ submitButton.addEventListener("click", () => {
 
 
 // TO DO
+// Add button to remove books
+// Add button to change a book from unread to read
