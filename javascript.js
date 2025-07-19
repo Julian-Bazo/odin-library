@@ -2,29 +2,35 @@ const myLibrary = [];
 let bookID = 0;
 
 
-function Book(title, author, pages) {
-    if (!new.target) {
-        throw Error("You must use the word 'new' when calling on the constructor!");
-    }
-    
+class Book {    
+    constructor(title, author, pages) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     bookID++;
     this.ID = bookID;
+    }
+
+    addBooktoLibrary() {
+        return myLibrary.push(new Book(this.title, this.author, this.pages));
+    }
 }
 
-function addBooktoLibrary(title, author, pages) {
-    return myLibrary.push(new Book(title, author, pages));
-}
+const Book1 = new Book("The Lord of the Rings", "Tolkien", "1300");
+Book1.addBooktoLibrary();
 
-addBooktoLibrary("The Lord of the Rings", "Tolkien", "1300");
-addBooktoLibrary("A Game of Thrones", "Martin", "804");
-addBooktoLibrary("A Clash of Kings", "Martin", "954");
-addBooktoLibrary("A Storm of Swords", "Martin", "1003");
-addBooktoLibrary("A Feast for Crows", "Martin", "786");
-addBooktoLibrary("A Dance with Dragons", "Martin", "990");
-addBooktoLibrary("The Winds of Winter", "Martin", "1405");
+const Book2 = new Book("A Game of Thrones", "Martin", "804");
+Book2.addBooktoLibrary();
+const Book3 = new Book("A Clash of Kings", "Martin", "954");
+Book3.addBooktoLibrary();
+const Book4 = new Book("A Storm of Swords", "Martin", "1003");
+Book4.addBooktoLibrary();
+const Book5 = new Book("A Feast for Crows", "Martin", "786");
+Book5.addBooktoLibrary();
+const Book6 = new Book("A Dance with Dragons", "Martin", "990");
+Book6.addBooktoLibrary();
+const Book7 = new Book("The Winds of Winter", "Martin", "1405");
+Book7.addBooktoLibrary();
 
 console.table(myLibrary);
 
@@ -135,7 +141,8 @@ let currentBookIndex = 0;
 submitButton.addEventListener("click", () => {
     event.preventDefault();
     if (bookTitle.value !== "" && authorName.value !== "" && pageCount.value !== "" && readStatus.value !== "") {    
-        addBooktoLibrary(bookTitle.value, authorName.value, pageCount.value);
+        const newBook = new Book(bookTitle.value, authorName.value, pageCount.value);
+        newBook.addBooktoLibrary();
         currentBookIndex = myLibrary.length - 1;
         addButton.click();
         resetButton.click()
@@ -149,3 +156,5 @@ submitButton.addEventListener("click", () => {
 
 
 // TO DO
+// Change add book form display to a modal
+// Play around with object prototype in regards to read status
